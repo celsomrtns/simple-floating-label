@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Formulário Material</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!--Estilos para Floating Label-->
+    <style>
+        /*Floating Labels*/
+        
+        .floating-label-form-group {
+            position: relative;
+            margin-bottom: 0;
+            padding-bottom: .5em;
+            border-bottom: 1px solid #eee;
+        }
+        .floating-label-form-group input,
+        .floating-label-form-group textarea {
+            z-index: 1;
+            position: relative;
+            padding-right: 0;
+            padding-left: 0;
+            border: 0;
+            border-radius: 0;
+            font-size: 1.5em;
+            background: 0 0;
+            box-shadow: none!important;
+            resize: none;
+        }
+        .floating-label-form-group label {
+            display: block;
+            z-index: 0;
+            position: relative;
+            top: 2em;
+            margin: 0;
+            font-size: .85em;
+            line-height: 1.764705882em;
+            vertical-align: middle;
+            vertical-align: baseline;
+            opacity: 0;
+            -webkit-transition: top .3s ease, opacity .3s ease;
+            -moz-transition: top .3s ease, opacity .3s ease;
+            -ms-transition: top .3s ease, opacity .3s ease;
+            transition: top .3s ease, opacity .3s ease;
+        }
+        .floating-label-form-group::not(:first-child) {
+            padding-left: 14px;
+            border-left: 1px solid #eee;
+        }
+        .floating-label-form-group-with-value label {
+            top: 0;
+            opacity: 1;
+        }
+        .floating-label-form-group-with-focus label {
+            color: #999;
+        }
+        form .row:first-child .floating-label-form-group {
+            /*border-top: 1px solid #eee;*/
+            
+            border-top: none;
+        }
+    </style>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <!--Floating label-->
+    <script>
+        // Floating label headings for the contact form
+        $(function() {
+            $("body").on("input propertychange", ".floating-label-form-group", function(e) {
+                $(this).toggleClass("floating-label-form-group-with-value", !!$(e.target).val());
+            }).on("focus", ".floating-label-form-group", function() {
+                $(this).addClass("floating-label-form-group-with-focus");
+            }).on("blur", ".floating-label-form-group", function() {
+                $(this).removeClass("floating-label-form-group-with-focus");
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="col-md-12">
+            <h1 class="text-center">Android Material Design Form</h1>
+        </div>
+        <div class="col-md-8 col-md-offset-2" style="border: 1px solid #eee; border-radius: 20px; padding: 10px 30px; background: rgba(255,255,255,.8);">
+            <form name="sentMessage" id="contactForm" novalidate>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" placeholder="Nome" id="nome" name="nome" required data-validation-required-message="Digite o seu nome.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="Email" id="email" name="email" required data-validation-required-message="Digite o seu e-mail.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Telefone</label>
+                        <input type="tel" class="form-control" placeholder="Telefone" id="telefone" name="telefone" required data-validation-required-message="Digite o seu telefone.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Mensagem</label>
+                        <textarea rows="5" class="form-control" placeholder="Mensagem" id="mensagem" name="mensagem" required data-validation-required-message="Digite sua mensagem."></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <br>
+                <div id="success"></div>
+                <div class="row">
+                    <div class="form-group col-xs-12 text-right">
+                        <button type="reset" class="btn btn-default">Limpar</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
